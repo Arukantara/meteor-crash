@@ -83,12 +83,19 @@ function Update () {
 function OnTriggerEnter (collisionInfo : Collider) {
 	if(collisionInfo.name == "meteorClone(Clone)")
 		hitByMeteor(collisionInfo);
+	else if(collisionInfo.name == "Star(Clone)")
+		hitByStar(collisionInfo);
 }
 
 // Reduces player life if hit by a meteor
 function hitByMeteor (collisionInfo : Collider) {
 	GetComponent.<AudioSource>().PlayOneShot(explosion);
 	life -= 15;
+}
+
+// Reduces player life if hit by a star
+function hitByStar (collisionInfo : Collider) {
+	life = 0;
 }
 
 // Scores up if meteor is hit by a shot
